@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>other api</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>other api</h1>
+    </header>
+    <div class="container">
+        <table>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+        </table>
+        <button class="btn" data-age="34" data-name="stephen curry" data-team="warriors">stephen curry </button>
+        <button class="btn" data-age="27" data-name="Shohei Ohtani" data-team="angels"> Shohei Ohtani</button>
+        <h3 id="target"></h3>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            //each()
+            let arr = ['Gary', 'test', 'eeit49'];
+            $.each(arr, function (index, ele) {
+                console.log(ele)
+            })
+
+            let sun = 0;
+            $('td').each(function () {
+                sun += Number($(this).text())
+            })
+            console.log(sun);
+            //inArray() 沒有的話會回傳-1
+            let arr1 = [1, 5, '6', 5, 88, '5', 2, 1, 4,];
+            console.log($.inArray(88, arr1))
+            console.log($.inArray(77, arr1))
+            let arr2 = $.grep(arr1, function (item, index) {
+                return (item % 2 == 0)
+            })
+            console.log(arr2)
+            $('.btn').on('click', function () {
+                let name = $(this).data('name');
+                let team = $(this).data('team');
+                let age = $(this).data('age');
+                $('#target').text(`${name} age is ${age} and team is ${team}`)
+            })
+
+        })
+    </script>
+</body>
+
+</html>

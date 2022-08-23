@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>ajax</h1>
+    </header>
+    <div class="container">
+        <button id="btn">ajax</button>
+        <ul id="data">
+            <li></li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            // $.ajax({
+            //     url: '',
+            //     type: get,
+            //     data: {
+
+            //     },
+            //     success: function () { },
+            //     error: function () { }
+
+            // })
+            $('#btn').on('click', function () {
+                $.ajax({
+                    url: 'https://data.cip.gov.tw/API/v1/dump/datastore/A53000000A-111021-001',
+                    success: function (response) {
+                        let records = JSON.parse(response).records
+                        $.each(records, function (index, records) {
+                            $('#data').append(
+                                `
+                                <li>${records.族別}</li>
+                                `
+                            )
+                        })
+                    }
+                })
+            })
+
+
+
+        })
+    </script>
+</body>
+
+</html>

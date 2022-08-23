@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form Events</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .card-input {
+            width: 50px;
+            margin: 5px;
+        }
+
+        .container-card {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>form Events</h1>
+    </header>
+    <div class="container">
+        <input type="text" class="text">
+        <!-- <div>
+            <input type="text" class="card-input" maxlength="4">
+            <input type="text" class="card-input" maxlength="4">
+            <input type="text" class="card-input" maxlength="4">
+            <input type="text" class="card-input" maxlength="4">
+        </div> -->
+        <div class="container-card">
+            <div class="div-card">
+                <input type="text" class="card-input" maxlength="4">
+            </div>
+            <div class="div-card">
+                <input type="text" class="card-input" maxlength="4">
+            </div>
+            <div class="div-card">
+                <input type="text" class="card-input" maxlength="4">
+            </div>
+            <div class="div-card">
+                <input type="text" class="card-input" maxlength="4">
+            </div>
+        </div>
+        <select name="" id="select">
+            <option value="TEP">台北</option>
+            <option value="NTP">新北</option>
+            <option value="TYO">桃園</option>
+        </select>
+        <div class="target"></div>
+
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            $('#select').change(function () {
+                console.log($(this).val())
+                $('.target').text($(this).val())
+            })
+            //聚焦
+            $('.text').focus(function () {
+                console.log('123')
+            })
+            //失焦
+            $('.text').blur(function () {
+                console.log('456')
+            })
+            $('.card-input').keyup(function () {
+                console.log($(this).val())
+                // if ($(this).val().length > 3) {
+                //     $(this).next().focus()
+                // }
+                if ($(this).val().length > 3) {
+                    // $(this).parent().next().children().focus()
+                    $(this).parent().next().find('input').focus()
+                }
+            })
+
+
+
+        })
+    </script>
+</body>
+
+</html>

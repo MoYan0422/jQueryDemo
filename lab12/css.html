@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .target {
+            border: 1px solid black;
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+
+        .wrap {
+            background-color: lightgray;
+            width: 800px;
+            height: 400px;
+            margin: 0 auto;
+            position: relative;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>css</h1>
+    </header>
+    <div class="container">
+        <div class="wrap">
+            <div class="target"></div>
+        </div>
+        <!-- <div class="target"></div> -->
+        <div class="circle" style="background-color: red;"></div>
+        <div class="circle" style="background-color: orange;"></div>
+        <div class="circle" style="background-color: yellow;"></div>
+        <div class="circle" style="background-color: green;"></div>
+        <div class="circle" style="background-color: blue;"></div>
+        <div class="circle" style="background-color: indigo;"></div>
+        <div class="circle" style="background-color: purple;"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            $('.circle').on('click', function () {
+
+                let color = $(this).css('background')
+                $('.target').css('background', color)
+            })
+            $('.target').css({
+                top: 20,
+                left: 20,
+                background: 'lightgreen'
+            })
+            // $(window).on('keyup', function () {
+
+            //     let keyCode = event.keyCode.toString()
+            //     switch (keyCode) {
+            //         case "37": $('.target').css({
+            //             left: '-=' + 20,
+            //         })
+            //             break;
+            //         case "38": case "37": $('.target').css({
+            //             top: '-=' + 20,
+            //         })
+            //             break;
+            //         case "39": $('.target').css({
+            //             left: '+=' + 20,
+            //         })
+            //             break;
+            //         case "40": case "37": $('.target').css({
+            //             top: '+=' + 20,
+            //         })
+
+            //     }
+
+
+            // })
+            document.onkeydown = function move() {
+                let keyCode = event.keyCode.toString()
+
+
+
+                switch (keyCode) {
+
+                    case "37":
+                        if (parseInt($('.target').css('left')) > 0) {
+                            $('.target').css({
+                                left: '-=' + 20,
+                            })
+                        }
+                        break;
+                    case "38": if (parseInt($('.target').css('top')) > 0) {
+                        $('.target').css({
+                            top: '-=' + 20,
+                        })
+                    }
+                        break;
+                    case "39": if (parseInt($('.target').css('left')) < 700) {
+                        $('.target').css({
+                            left: '+=' + 20,
+                        })
+                    }
+                        break;
+                    case "40": if (parseInt($('.target').css('top')) < 300) {
+                        $('.target').css({
+                            top: '+=' + 20,
+                        })
+                    } break;
+
+                }
+            }
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>

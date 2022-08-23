@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>plugins</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="/lab17/plugin/lightbox2-dev/dist/css/lightbox.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/lab17/plugin/vegas/vegas.css">
+</head>
+
+<body>
+    <header>
+        <h1>plugins</h1>
+    </header>
+    <button class="btn"></button>
+    <div class="container">
+        <a href="/lab13/img/istockphoto1.jpg" data-lightbox="roadtrip">Image #2</a>
+        <a href="/lab13/img/istockphoto2.jpg" data-lightbox="roadtrip">Image #3</a>
+        <a href="/lab13/img/istockphoto3.jpg" data-lightbox="roadtrip">Image #4</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="/lab17/plugin/lightbox2-dev/dist/js/lightbox.js"></script>
+    <script src="/lab17/plugin/vegas/vegas.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(function () {
+            $('.btn').on('click', function () {
+                Swal.fire(
+                    '看不懂英文?',
+                    '來學就對了?',
+                    'question'
+                )
+            })
+            $("#example, body").vegas({
+                slides: [
+                    { src: "/lab13/img/istockphoto1.jpg" },
+                    { src: "/lab13/img/istockphoto2.jpg" },
+                    { src: "/lab13/img/istockphoto3.jpg" },
+                    { src: "/lab13/img/istockphoto4.jpg" }
+                ],
+                transition: 'swirlRight2'
+            });
+
+
+        })
+    </script>
+</body>
+
+</html>

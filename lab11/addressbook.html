@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addressBook</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .input {
+            display: inline-block;
+        }
+
+        table {
+            border: 2px solid black;
+            width: 500px;
+            margin: 5px;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/c3aa7c53fc.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <h1>addressBook</h1>
+    </header>
+    <div class="container">
+        <div class="input">
+            <input type="text" id="Name" placeholder="請輸入姓名">
+            <input type="text" id="Email" placeholder="請輸入E-mail">
+            <input type="text" id="Phone" placeholder="請輸入電話">
+
+        </div>
+        <div class="input">
+            <button id="add"><i class="fa-solid fa-plus"></i></button>
+
+        </div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script>
+        $(function () {
+            $('#add').on('click', function () {
+                let name = $('#Name').val(),
+                    email = $('#Email').val(),
+                    phone = $('#Phone').val()
+                let content =
+                    `<tr>
+                            <td>${name}</td>
+                            <td>${email}</td>
+                            <td>${phone}</td>
+                        </tr>
+                        <td><button class="delete">delete</button></td>
+                        `
+                $('tbody').append(content);
+                $('#Name').val('');
+                $('#Email').val('');
+                $('#Phone').val('');
+            })
+            $('tbody').on('click', '.delete', function () {
+                $(this).closest('tr').remove();
+            })
+
+
+
+        })
+    </script>
+</body>
+
+</html>
